@@ -9,7 +9,7 @@ import "../../styles/LinkBridge/linkbridge.css";
 
 export default function LinkBridge() {
   const phone = "5511961640586";
-  const message = "Olá, vim pelo seu site e gostaria de mais informações!";
+  const message = "Olá Eduarda, vim pelo seu site e gostaria de mais informações!";
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
   return (
