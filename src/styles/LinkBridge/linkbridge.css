@@ -1,207 +1,179 @@
 @import url("../../styles/main.css");
 
+/* ========================= */
+/* 🌐 BASE */
+/* ========================= */
+
 .linkbridge {
+  width: 100%;
+  max-width: 500px;
   min-height: 100vh;
-  background-repeat: no-repeat;
-  background-position: center 25%;
-  background-size: cover;
+  margin: 0 auto;
   position: relative;
+
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  overflow: hidden;
 }
 
 
-/* Overlay mais suave na parte superior */
+
+/* ========================= */
+/* 🎯 OVERLAY */
+/* ========================= */
+
 .overlay {
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1) 0%,   /* menos escuro no topo (rosto) */
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.6) 100%
+    to right,
+    rgba(255,255,255,0.96) 0%,
+    rgba(255,255,255,0.85) 30%,
+    rgba(255,255,255,0.55) 50%,
+    rgba(255,255,255,0.2) 65%,
+    rgba(255,255,255,0) 80%
   );
+
+  z-index: 1;
 }
+
+/* ========================= */
+/* 📱 CONTAINER FIXO (MOBILE) */
+/* ========================= */
 
 .content {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 480px;
-  text-align: center;
-  color: #fff;
+  width: min(100%, 520px);
+  max-width: 520px;
+  height: 100vh;
+  padding: auto;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 20px;
-  
+  gap: 20px;
+  padding: 24px 22px;
+  color: #1f2a37;
 }
 
-/* LOGO */
+/* ========================= */
+/* 🧩 LOGO */
+/* ========================= */
+
+.logo-container {
+  width: 150px;
+  filter: brightness(0) opacity(0.8);
+  opacity: 0.7;
+}
 
 .logo-container img {
-  width: 120px;
-  max-width: 60%;
+  width: 100%;
 }
 
-/* TEXTO */
+/* ========================= */
+/* ✍️ TEXTO */
+/* ========================= */
 
 .header-text h1 {
-  font-size: 1.8rem;
-  line-height: 1.1;
-  letter-spacing: 1px;
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin: 0;
+  color: #1f2a37;
 }
 
 .header-text h2 {
-  font-size: 1.4rem;
-  font-weight: 400;
-  margin-top: 4px;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  margin-top: 10px;
+  color: #8a7f75;
 }
 
-.header-text p {
-  font-size: 0.95rem;
-  opacity: 0.85;
-  margin-top: 8px;
-}
-
-/* BOTÕES */
-
-.main-links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  width: 50%;
-  padding-top: 00px;
-}
+/* ========================= */
+/* 🔘 BOTÕES */
+/* ========================= */
 
 .link-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 14px;
+  gap: 12px;
+  width: 50%;
+  padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  color: #fff;
+
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: all 0.3s ease;
-  width: 100%;
+
+  transition: all 0.25s ease;
+  
 }
 
-.link-btn:hover {
+/* PRINCIPAL */
+.link-btn.primary {
+  background: #1f2a37;
+  color: #fff;
+
+  padding: 8px 14px;
+  border-radius: 16px;
+}
+
+.link-btn.primary:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.25);
+  background: #111827;
 }
 
-.link-btn.whatsapp {
-  background: var(--color2);
-  color: #fff;
-  font-weight: 600;
-}
-
-.link-btn.whatsapp:hover {
-  background: var(--color2Hover);
-}
-
-/* REDES SOCIAIS */
-
-.social-links {
-  margin-top: 10px;
+.link-btn.primary .btn-text {
   display: flex;
-  justify-content: space-between;
-  gap: 22px;
+  flex-direction: column;
 }
 
-.social-links a {
-  font-size: 1.6rem;
-  color: #fff;
-  opacity: 0.9;
-  transition: transform 0.3s, opacity 0.3s;
+.link-btn.primary small {
+  font-size: 0.7rem;
+  opacity: 0.7;
 }
 
-.social-links a:hover {
-  transform: scale(1.15);
-  opacity: 1;
+/* SECUNDÁRIOS */
+.secondary-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* ========================= */
-/* 📱 TABLET */
-/* ========================= */
+.link-btn.outline {
+  background: rgba(255,255,255,0.4);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: #333;
+}
 
-@media (min-width: 768px) {
-  .linkbridge {
-    background-position: center 75%;
-    align-items: flex-end;
-    padding-bottom: 100px; /* deixa o rosto respirar */
-  }
-  .content {
-    max-width: 600px;
-  }
-
-  .header-text h1 {
-    font-size: 2.2rem;
-    padding-top: 50px;
-  }
-
-  .header-text h2 {
-    font-size: 1.6rem;
-  }
-
-  .header-text p {
-    font-size: 1.05rem;
-  }
-
-  .link-btn {
-    padding: 16px;
-    font-size: 1.05rem;
-  }
-
-  .logo-container img {
-    width: 300px;
-  }
+.link-btn.outline:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* ========================= */
-/* 💻 DESKTOP */
+/* 🧠 CTA */
 /* ========================= */
 
-@media (min-width: 1024px) {
-  .linkbridge {
-    background-size: 100%; /* 🔥 menos zoom */
-    background-position: right center;
-    align-items: center;
-    padding: 80px 20px;
-  }
+.footer-cta{
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.footer-cta span {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b6b6b;
+}
 
-  .content {
-    max-width: 2560px;
-  }
-  .header-text{
-    width: 50%;
-  }
-  .header-text h1 {
-    font-size: 2.6rem;
-  }
-
-  .header-text h2 {
-    font-size: 1.9rem;
-  }
-
-  .header-text p {
-    font-size: 1.1rem;
-  }
-
-  .link-btn {
-    font-size: 1.1rem;
-    padding: 18px;
-  }
-  .social-links{
-    justify-content: space-evenly;
-  }
-  .logo-container img {
-    width: 500px;
-  }
+.footer-line {
+  width: 50px;
+  height: 2px;
+  background: #c7a17a;
+  margin-top: 6px;
 }

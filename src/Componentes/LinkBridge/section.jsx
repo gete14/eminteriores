@@ -1,16 +1,8 @@
 import React from "react";
-import {
-  FaWhatsapp,
-  FaInstagram,
-  FaTiktok,
-  FaGlobe,
-  FaBriefcase,
-  FaWpforms,
-  FaEnvelope
-} from "react-icons/fa";
-
+import { FaWhatsapp, FaInstagram, FaBriefcase } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import heroImg from "../../img/LinkBridge/foto-1.png";
+
+import heroImg from "../../img/LinkBridge/foto-1.jpg";
 import logo from "../../img/Logos/logoBranca.png";
 
 import "../../styles/LinkBridge/linkbridge.css";
@@ -29,56 +21,54 @@ export default function LinkBridge() {
 
       <div className="content">
 
-
-
-        <div className="header-text">
-          <h1>EDUARDA</h1>
-          <h2>EM INTERIORES</h2>
-          <p>Soluções verdadeiras para a sua casa!</p>
-        </div>
-
-        <div className="main-links">
-          <Link to='/home' className="link-btn"><FaGlobe />Site</Link>
-          <Link to='/portfolio' className="link-btn"><FaBriefcase />Portfólio</Link>
-          <Link to='/contato' className="link-btn"><FaWpforms />Formulário</Link>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-btn whatsapp"
-          >
-            <FaWhatsapp /> WhatsApp
-          </a>
-
-
-          <div className="social-links">
-            <a
-              href="https://instagram.com/e.m.interiores"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram">
-              <FaInstagram />
-            </a>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp">
-              <FaWhatsapp />
-            </a>
-            <a
-              href="https://www.tiktok.com/@e.m.interiores"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="TikTok">
-              <FaTiktok />
-            </a>
-          </div>
-        </div>
-
-
+        {/* LOGO */}
         <div className="logo-container">
           <img src={logo} alt="Logo" />
+        </div>
+
+        {/* TEXTO */}
+        <div className="header-text">
+          <h1>EDUARDA </h1>
+          <h1> SILVA</h1>
+          <h2>DESIGN DE</h2>
+          <h2>INTERIORES</h2>
+        </div>
+
+        {/* BOTÃO PRINCIPAL */}
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-btn primary"
+        >
+          <FaWhatsapp />
+          <div className="btn-text">
+            <span>WhatsApp</span>
+            <small>Solicitar orçamento</small>
+          </div>
+        </a>
+
+        {/* BOTÕES SECUNDÁRIOS */}
+        <div className="secondary-links">
+          <Link to="/portfolio" className="link-btn outline">
+            <FaBriefcase /> Portfólio
+          </Link>
+
+          <a
+            href="https://instagram.com/e.m.interiores"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="link-btn outline"
+          >
+            <FaInstagram /> Instagram
+          </a>
+        </div>
+
+        {/* CTA */}
+        <div className="footer-cta">
+          <span>VAMOS TRANSFORMAR</span>
+          <span>SEU AMBIENTE?</span>
+          <div className="footer-line"></div>
         </div>
 
       </div>
