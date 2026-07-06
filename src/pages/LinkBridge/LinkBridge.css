@@ -1,0 +1,207 @@
+@import url("../../styles/global.css");
+
+.linkbridge {
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center 25%;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Overlay mais suave na parte superior */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,   /* menos escuro no topo (rosto) */
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px;
+  
+}
+
+/* LOGO */
+
+.logo-container img {
+  width: 120px;
+  max-width: 60%;
+}
+
+/* TEXTO */
+
+.header-text h1 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.header-text h2 {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+.header-text p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
+/* BOTÕES */
+
+.main-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 50%;
+  padding-top: 00px;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.link-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.link-btn.whatsapp {
+  background: var(--color2);
+  color: #fff;
+  font-weight: 600;
+}
+
+.link-btn.whatsapp:hover {
+  background: var(--color2Hover);
+}
+
+/* REDES SOCIAIS */
+
+.social-links {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+}
+
+.social-links a {
+  font-size: 1.6rem;
+  color: #fff;
+  opacity: 0.9;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-links a:hover {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+/* ========================= */
+/* 📱 TABLET */
+/* ========================= */
+
+@media (min-width: 768px) {
+  .linkbridge {
+    background-position: center 75%;
+    align-items: flex-end;
+    padding-bottom: 100px; /* deixa o rosto respirar */
+  }
+  .content {
+    max-width: 600px;
+  }
+
+  .header-text h1 {
+    font-size: 2.2rem;
+    padding-top: 50px;
+  }
+
+  .header-text h2 {
+    font-size: 1.6rem;
+  }
+
+  .header-text p {
+    font-size: 1.05rem;
+  }
+
+  .link-btn {
+    padding: 16px;
+    font-size: 1.05rem;
+  }
+
+  .logo-container img {
+    width: 300px;
+  }
+}
+
+/* ========================= */
+/* 💻 DESKTOP */
+/* ========================= */
+
+@media (min-width: 1024px) {
+  .linkbridge {
+    background-size: 100%; /* 🔥 menos zoom */
+    background-position: right center;
+    align-items: center;
+    padding: 80px 20px;
+  }
+
+  .content {
+    max-width: 2560px;
+  }
+  .header-text{
+    width: 50%;
+  }
+  .header-text h1 {
+    font-size: 2.6rem;
+  }
+
+  .header-text h2 {
+    font-size: 1.9rem;
+  }
+
+  .header-text p {
+    font-size: 1.1rem;
+  }
+
+  .link-btn {
+    font-size: 1.1rem;
+    padding: 18px;
+  }
+  .social-links{
+    justify-content: space-evenly;
+  }
+  .logo-container img {
+    width: 500px;
+  }
+}

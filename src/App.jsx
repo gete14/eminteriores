@@ -1,18 +1,14 @@
-// App.jsx
-import React from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
-// Componentes
-import Footer from "./Comuns/Footer";
-import NavBar from "./Comuns/NavBar";
-import ScrollToTop from "./Comuns/ScrollToTop";
+import Footer from "./common/Footer/Footer.jsx";
+import NavBar from "./common/NavBar/NavBar.jsx";
+import ScrollToTop from "./common/ScrollToTop.jsx";
 
-// Páginas
-import Portfolio from "./Pages/Portfolio";
-import ComoFunciona from "./Pages/ComoFunciona";
-import Contato from "./pages/Contato";
-import LandingPage from "./pages/LandingPage";
-import LinkBridge from "./pages/LinkBridge";
+import LinkBridge from "./pages/LinkBridge/index.jsx";
+import LandingPage from "./pages/LandingPage/index.jsx";
+import ComoFunciona from "./pages/ComoFunciona/index.jsx";
+import Portfolio from "./pages/Portfolio/index.jsx";
+import Contato from "./pages/Contato/index.jsx";
 
 export default function App() {
   return (
@@ -23,10 +19,10 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<LinkBridge />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/como-funciona" element={<ComoFunciona />} />
-        <Route path="/contato" element={<Contato />} />
         <Route path="/home" element={<LandingPage />} />
+        <Route path="/como-funciona" element={<ComoFunciona />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contato" element={<Contato />} />
 
         {/* Página 404 */}
         <Route path="*" element={<h1>Página não encontrada</h1>} />

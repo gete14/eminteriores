@@ -1,16 +1,58 @@
-# React + Vite
+# EM Interiores
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site institucional da EM Interiores — projetos de design de interiores conduzidos por Eduarda Silva Prado, do briefing ao tour virtual do ambiente pronto.
 
-Currently, two official plugins are available:
+Produção: [eminteriores.com.br](https://eminteriores.com.br)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Stack
 
-## React Compiler
+- [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- [React Router](https://reactrouter.com/) (`HashRouter`) para navegação entre páginas
+- [react-slick](https://react-slick.neostack.com/) + [GLightbox](https://biati-digital.github.io/glightbox/) para os carrosséis e a galeria em lightbox do Portfólio
+- [react-icons](https://react-icons.github.io/react-icons/) e [lucide-react](https://lucide.dev/) para ícones
+- Deploy estático no GitHub Pages (domínio próprio via `CNAME`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Estrutura do projeto
 
-## Expanding the ESLint configuration
+```
+src/
+  main.jsx            # bootstrap da aplicação (StrictMode + render)
+  App.jsx              # rotas da aplicação
+  pages/                # uma pasta por página, com JSX, CSS e imagens co-localizados
+    LandingPage/         # rota /home
+    ComoFunciona/         # rota /como-funciona
+    Portfolio/            # rota /portfolio
+    Contato/              # rota /contato
+    LinkBridge/           # rota / (link-in-bio)
+  common/               # componentes compartilhados entre páginas
+    NavBar/
+    Footer/
+    WhatsAppButton/
+    ScrollToTop.jsx
+  assets/               # imagens compartilhadas entre features (logos, fundo)
+  styles/
+    global.css           # reset, fonte e variáveis CSS globais
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Cada página em `src/pages/<Nome>` concentra o que só ela usa (subcomponentes, CSS e imagens). Recursos usados por mais de uma página (logos, fundo compartilhado) ficam em `src/assets/`.
+
+## Rodando localmente
+
+```bash
+npm install
+npm run dev
+```
+
+## Scripts
+
+| Script            | Descrição                                              |
+| ----------------- | ------------------------------------------------------- |
+| `npm run dev`      | Servidor de desenvolvimento com hot reload               |
+| `npm run build`    | Build de produção em `dist/`                             |
+| `npm run preview`  | Serve o build de produção localmente                      |
+| `npm run lint`     | Roda o ESLint                                              |
+| `npm run deploy`   | Build + publica `dist/` no branch `gh-pages` (fallback manual) |
+
+## Deploy
+
+O deploy para o GitHub Pages é automático: todo push em `main` dispara o workflow `.github/workflows/deploy.yml`, que builda o projeto e publica `dist/` (incluindo o `CNAME` do domínio próprio) no branch `gh-pages`. O script `npm run deploy` continua disponível como alternativa manual.
