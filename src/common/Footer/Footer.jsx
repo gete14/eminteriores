@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
 
+  const numeroWhatsapp = "5511961640586";
+  const mensagem = "Olá, vim pelo seu site e gostaria de falar com a Eduarda.";
+  const mensagemOrcamento = "Olá, quero realizar um orçamento com a Eduarda."
+
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -37,7 +41,7 @@ export default function Footer() {
           <h3>Redes sociais</h3>
 
           <a
-            href="https://wa.me/5511961640586"
+            href={`https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${encodeURIComponent(mensagem)}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -76,8 +80,11 @@ export default function Footer() {
             e realizar seu sonho em realidade!!
           </p>
 
-          <button className="btn-gold"
-            onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=5511999999999&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os.'}>
+          <button
+           onClick={() =>
+          window.location.href = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${encodeURIComponent(mensagemOrcamento)}`}
+          className="btn-gold"
+          >
             FAÇA SEU ORÇAMENTO
           </button>
         </div>
