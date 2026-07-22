@@ -3,7 +3,7 @@ import "./WhatsAppButton.css";
 
 function WhatsAppButton() {
   const phone = "5511961640586";
-  const message = "Olá, vim pelo seu site e gostaria de mais informações!";
+  const message = "Olá, vim pelo seu site e gostaria de falar com a Eduarda.";
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   return (
     <a

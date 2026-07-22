@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./LandingPage.css";
 import { useReveal } from "../../common/useReveal.js";
+import { Link, useLocation } from "react-router-dom";
 
 import imagem1 from "./images/image-ultimo-projeto-1.png";
 import imagem2 from "./images/image-ultimo-projeto-2.png";
@@ -29,7 +30,10 @@ export default function UltimosProjetos() {
             </div>
           ))}
         </div>
-        <button className="btn-gold">Ver Todos</button>
+        <Link to='/portfolio'>
+          <button className="btn-gold">Ver Tour Online</button>
+        </Link>
+        
 
         {imagemAberta && (
           <div

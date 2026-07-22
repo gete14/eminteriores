@@ -61,14 +61,17 @@
 .tour-section {
     width: 100%;
     padding: clamp(2rem, 4vw, 5rem);
+    justify-content: center;
+    display: flex;
 }
 /* Carrossel */
 .tour-carousel {
-    display: flex;
-    gap: 5rem;    
+    display: flex;   
     padding-bottom: 1rem;
     padding-top: 1rem;
     flex-wrap: wrap;
+   justify-content: center;
+
 }
 
 /* Card */
@@ -80,6 +83,8 @@
     scroll-snap-align: start;
     transition: transform 0.3s ease;
     position: relative;
+    flex: 1;
+    margin: 2rem 5rem;
 }
 
 .tour-card-border {
@@ -99,7 +104,7 @@
 /* Imagem */
 .tour-image {
     width: 100%;
-    height: 180px;
+    height: 300px;
     padding: 0.5rem;
     border-radius: 18px;
     object-fit: cover;
@@ -201,12 +206,16 @@
     }
 
     .heroPortfolio__content p {
-        left: 38%;
+        left: 60%;
         width: 60%;
     }
 
     .tour-carousel {
         gap: 2.5rem;
+    }
+
+    .tour-card{
+        margin: 2rem 2rem;
     }
 }
 
@@ -224,40 +233,21 @@
         min-height: 300px;
     }
 
-    .heroPortfolio__content {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to top, rgba(28, 18, 8, 0.75) 0%, rgba(28, 18, 8, 0.3) 60%, transparent 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 2rem;
-    }
-
     .heroPortfolio__content h1 {
-        font-size: 2.6rem;
-        left: 0;
-        position: relative;
-        text-align: left;
-        background: var(--gradient-gold-text-hero-social);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        left: 30%;
+        font-size: 2.4rem;
     }
 
     .heroPortfolio__content p {
-        left: 0;
+        left: 80%;
         position: relative;
-        width: 100%;
-        text-align: left;
-        color: var(--color-ivory);
-        font-size: 1rem;
+        width: 50%;
+        font-size: .7rem;
         margin-top: 0.5rem;
     }
 
     .tour-carousel {
-        gap: 1.5rem;
+        gap: 3rem;
         flex-wrap: wrap;
         justify-content: center;
     }
@@ -270,18 +260,27 @@
     .tour-section {
         padding: clamp(1.5rem, 3vw, 3rem);
     }
+
+    .tour-card{
+        margin: 1rem 1rem;
+    }
 }
 
 /* ===============================
    RESPONSIVO - MOBILE PEQUENO
 ================================ */
-@media (max-width: 480px) {
+@media (max-width: 430px) {
     .heroPortfolio__image {
         height: 50vh;
     }
 
     .heroPortfolio__content h1 {
         font-size: 2rem;
+        left: 10%;
+    }
+
+    .heroPortfolio__content p {
+        font-size: .6rem;
     }
 
     .tour-carousel {
@@ -290,8 +289,9 @@
     }
 
     .tour-card {
-        min-width: 160px;
-        max-width: 240px;
+        min-width: 260px;
+        max-width: 340px;
+        margin: 1rem 1rem;
     }
 
     .tour-modal-close {

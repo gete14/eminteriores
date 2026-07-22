@@ -79,7 +79,10 @@ body {
       #7A5A00 50%);
 
   --gradient-gold-dot: radial-gradient(circle at center,
-      #FFE4B0 0%,
+      #FFE4B0 10%,
+      #F7D774 20%,
+      #D4AF37 40%,
+      #B8860B 60%,
       #7A5A00 100%);
 
   --gradient-gold-text-active: linear-gradient(0deg,

@@ -52,13 +52,18 @@ export default function NavBar() {
   const isActive = (path) => location.pathname === path;
 
 
+  const numeroWhatsapp = "5511961640586";
+  const mensagem = "Olá, vim pelo seu site e gostaria de falar com a Eduarda.";
+
+
+
   return (
     <header className={showHeader ? "show" : "hide"}>
       <div className="header-content">
 
         <Link to='/'>
           <div className="logo-area">
-            
+
             <img src={logoSvg} alt="Logo" className="logo" />
           </div>
         </Link>
@@ -101,13 +106,15 @@ export default function NavBar() {
           >
             História
           </Link>
-        </nav>
-        <button
-          onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=5511999999999&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os.'}
+          <button
+         onClick={() =>
+          window.location.href = `https://api.whatsapp.com/send?phone=${numeroWhatsapp}&text=${encodeURIComponent(mensagem)}`}
           className="btn-gold"
         >
           Fale Comigo
         </button>
+        </nav>
+        
 
       </div>
     </header>

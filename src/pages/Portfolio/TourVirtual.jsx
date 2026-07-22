@@ -27,7 +27,7 @@ const tours = [
   { id: 8, cliente: "Apto 406", imagem: imagem8, link: "https://tour.meupasseiovirtual.com/view/Apr7KZUulJi" },
   { id: 9, cliente: "Apto 86B", imagem: imagem9, link: "https://tour.meupasseiovirtual.com/view/1gPlvbAoihb" },
   { id: 10, cliente: "Apto 34", imagem: imagem10, link: "https://tour.meupasseiovirtual.com/view/SfruCn5manb" },
-  { id: 11, cliente: "Apto 91-2", imagem: imagem11, link: "https://tour.meupasseiovirtual.com/view/aQ4i0UiiBrm" },
+  { id: 11, cliente: "Apto KM", imagem: imagem11, link: "https://tour.meupasseiovirtual.com/view/aQ4i0UiiBrm" },
 ];
 
 export default function TourVirtual() {
