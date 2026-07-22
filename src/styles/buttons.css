@@ -25,7 +25,6 @@
 
 .btn-gold:hover {
   transform: translateY(-4px);
-
   background: var(--gradient-gold-btn-hover);
 }
 
