@@ -1,16 +1,6 @@
 import { useState } from "react";
-import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from "react-icons/md";
-
-import {
-    FaLightbulb,
-    FaRuler,
-    FaTools,
-} from "react-icons/fa";
-import { MdChecklist, MdVideoCameraBack, MdOutlineAddToDrive, MdOutlineSupportAgent } from "react-icons/md";
-import { BsFillFileTextFill } from "react-icons/bs";
-import { IoChatbubbles } from "react-icons/io5";
-import { BiCube } from "react-icons/bi";
-
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import "./ComoFunciona.css";
 
 import foto1 from "./images/foto1.png";
@@ -19,91 +9,83 @@ import foto3 from "./images/foto3.png";
 import foto4 from "./images/foto4.png";
 import foto5 from "./images/foto5.png";
 import foto6 from "./images/foto6.png";
-import video from "./images/foto7(video).mp4";
 import foto8 from "./images/foto8.png";
 import foto9 from "./images/foto9.png";
-import foto10 from "./images/foto10.png";
+
+const steps = [
+  { img: foto1, titulo: "Primeiro Contato", descricao: "Você fala comigo sobre seu projeto, suas necessidades e estilo de vida. Vamos nos conhecer melhor!" },
+  { img: foto2, titulo: "Levantamento", descricao: "Entendo o seu espaço, faço as medições e coleto todas as informações necessárias." },
+  { img: foto3, titulo: "Estudo do Projeto", descricao: "Desenvolvo a proposta inicial com layout, conceito e soluções personalizadas." },
+  { img: foto4, titulo: "Apresentação", descricao: "Apresento o projeto com imagens 3D, materiais e cada detalhe pensado para você." },
+  { img: foto5, titulo: "Aprovação", descricao: "Ajustamos juntos o projeto até que tudo fique perfeito para você." },
+  { img: foto6, titulo: "Detalhamento", descricao: "Produzo todos os documentos técnicos, listas de compra e orientações." },
+  { img: foto8, titulo: "Execução", descricao: "Acompanhamento da execução para garantir que tudo saia conforme o planejado." },
+  { img: foto9, titulo: "Entrega", descricao: "Seu ambiente pronto, funcional e cheio de personalidade para você viver e aproveitar!" },
+];
 
 export default function ContainerPassos() {
+  const [current, setCurrent] = useState(0);
 
-    const icons = [
-        <FaLightbulb className="icone" />,
-        <MdChecklist className="icone" />,
-        <FaRuler className="icone" />,
-        <BiCube className="icone" />,
-        <FaTools className="icone" />,
-        <BsFillFileTextFill className="icone" />,
-        <MdVideoCameraBack className="icone" />,
-        <IoChatbubbles className="icone" />,
-        <MdOutlineAddToDrive className="icone" />,
-        <MdOutlineSupportAgent className="icone" />
-    ];
+  const go = (index) => setCurrent(index);
+  const prev = () => setCurrent(s => Math.max(0, s - 1));
+  const next = () => setCurrent(s => Math.min(steps.length - 1, s + 1));
 
-    const steps = [
-        { img: foto1, text: "Vou explicar a voces o processo de desenvolvimento dos nossos projetos de design de interiores!" },
-        { img: foto2, text: "Minha parte começa assim que seu projeto arquitetônico estiver pronto.\n Vou precisar da planta com todas as medidas para começar!" },
-        { img: foto3, text: "Eu simplifico toda a planta, mantendo apenas as paredes, janelas e portas. \n Dessa forma, já tenho uma base para fazer anotações durante a reunião de briefing." },
-        { img: foto4, text: "Nessa reunião, vou compreender suas necessidades e elaborar um layout específico para o cotidiano da sua família..." },
-        { img: foto5, text: "Agora, analiso todo o layout, buscando a melhor distribuição, sempre considerando a circulação e o aproveitamento do espaço." },
-        { img: foto6, text: "Com o layout definido, iniciarei a modelagem e criarei as imagens renderizadas. \n Após revisão de tudo, farei a tão esperada reunião para apresentar o projeto." },
-        { img: video, type: "video", text: "Além das imagens, crio um tour virtual para que o cliente possa ter uma melhor noção do ambiente." },
-        { img: foto8, text: "Após a aprovação das imagens, avançamos para o detalhamento, onde cada aspecto é especificado com precisão. \n Isso permite que o cliente elabore o projeto de acordo com as imagens que visualizou." },
-        { img: foto9, text: "Após concluir  o detalhamento, crio uma pasta no Drive na qual armazeno todos os arquivos, para que o cliente possa acessar os PDFs sempre que necessário. \n Isso facilita o envio para terceiros." },
-        { img: foto10, text: "Essas são as etapas do projeto. \n Mesmo após a sua conclusão, permaneço em contato com o cliente para esclarecer possíveis dúvidas e auxiliar na reforma de forma online." },
-    ];
+  const getClass = (index) => {
+    const diff = index - current;
+    if (diff === 0) return "pfc ativo";
+    if (diff === -1) return "pfc adj esq";
+    if (diff === 1) return "pfc adj dir";
+    return "pfc oculto";
+  };
 
-    const [currentStep, setCurrentStep] = useState(0);
+  const getStyle = (index) => {
+    const diff = index - current;
+    if (Math.abs(diff) > 1) {
+      return { transform: `translateX(${diff > 0 ? "130%" : "-130%"}) scale(0.4)` };
+    }
+    return {};
+  };
 
-    const nextStep = () => setCurrentStep((prev) => (prev + 1) % steps.length);
-    const prevStep = () => setCurrentStep((prev) => (prev - 1 + steps.length) % steps.length);
+  return (
+    <section className="passos-section">
 
-    return (
-        <section className="passos-section">
+      <div className="passos-stage">
 
-            {/* Indicadores */}
-            <div className="passos-indicadores">
-                {steps.map((_, index) => (
-                    <button
-                        key={index}
-                        className={`passo-btn ${currentStep === index ? "ativo" : ""}`}
-                        onClick={() => setCurrentStep(index)}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
+        {steps.map((step, index) => (
+          <div
+            key={index}
+            className={getClass(index)}
+            style={getStyle(index)}
+            onClick={() => index !== current && go(index)}
+          >
+            <div className="pfc-badge">{String(index + 1).padStart(2, "0")}</div>
+            <div className="pfc-img-wrapper">
+              <img src={step.img} alt={step.titulo} className="pfc-img" />
             </div>
+            <h3 className="pfc-titulo">{step.titulo}</h3>
+            <p className="pfc-desc">{step.descricao}</p>
+          </div>
+        ))}
 
-            {/* Conteúdo */}
-            <div className="passos-conteudo">
+        <button className="passo-seta passo-seta-esq" onClick={prev} disabled={current === 0}>
+          <MdOutlineKeyboardArrowLeft />
+        </button>
+        <button className="passo-seta passo-seta-dir" onClick={next} disabled={current === steps.length - 1}>
+          <MdOutlineKeyboardArrowRight />
+        </button>
 
-                <button className="passo-seta esquerda" onClick={prevStep}>
-                    <MdOutlineKeyboardArrowLeft className="arrow-icon" />
-                </button>
+      </div>
 
-                {/* AQUI: key e classe fade */}
-                <div className="passo-card fade" key={currentStep}>
+      <div className="passos-dots">
+        {steps.map((_, i) => (
+          <button
+            key={i}
+            className={`passo-dot ${i === current ? "ativo" : ""}`}
+            onClick={() => go(i)}
+          />
+        ))}
+      </div>
 
-                    <div className="passo-imagem">
-                        {steps[currentStep].type === "video" ? (
-                            <video src={steps[currentStep].img} controls autoPlay muted />
-                        ) : (
-                            <img src={steps[currentStep].img} alt={`Passo ${currentStep + 1}`} />
-                        )}
-                    </div>
-
-                    <div className="passo-info">
-                        <div className="passo-icone">
-                            {icons[currentStep]}
-                        </div>
-                        <p>{steps[currentStep].text}</p>
-                    </div>
-                </div>
-
-                <button className="passo-seta direita" onClick={nextStep}>
-                    <MdOutlineKeyboardArrowRight className="arrow-icon" />
-                </button>
-
-            </div>
-        </section>
-    );
+    </section>
+  );
 }

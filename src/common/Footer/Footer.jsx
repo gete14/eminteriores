@@ -1,83 +1,92 @@
 import "./Footer.css";
-import logo from "../../assets/logos/logoBranca.png";
-import { Link, useLocation } from "react-router-dom";
+import logo from "../../assets/logos/logo-footer.svg";
+import instagram from "../../assets/logos/BsInstagram.svg";
+import whatsapp from "../../assets/logos/BsWhatsapp.svg";
+import tiktok from "../../assets/logos/IoLogoTiktok.svg";
 
-import { FaInstagram, FaWhatsapp, FaTiktok, FaRegCopyright } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
-  const location = useLocation();
-   if (location.pathname === "/") {
-  return null;
-}
 
   return (
     <footer className="footer">
-      <div className="footer-top">
+      <div className="footer-content">
 
-        {/* LOGO */}
-        <Link to='/'>
-          <div className="footer-logo">
-            <img src={logo} alt="Logo" />
-          </div>
-        </Link>
-
-        {/* BLOCOS: NAVEGAÇÃO + REDES */}
-        <div className="footer-blocks">
-          {/* NAVEGAÇÃO */}
-          <div className="footer-section">
-            <h3>Navegação</h3>
-            <Link to='/' className="button-nav">Home</Link>
-            <Link to='/como-funciona' className="button-nav">Como Funciona</Link>
-            <Link to='/portfolio' className="button-nav">Portfólio</Link>
-            <Link to='/contato' className="button-nav">Contato</Link>
-          </div>
-
-          {/* REDES SOCIAIS */}
-          <div className="footer-section">
-            <h3>Redes</h3>
-            <div className="social-item">
-              <a href="https://www.instagram.com/e.m.interiores/"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FaInstagram className="icon" />
-                Instagram
-              </a>
-            </div>
-
-            <div className="social-item">
-              <a href="https://wa.me/5511961640586"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FaWhatsapp className="icon" />
-                WhatsApp
-              </a>
-            </div>
-
-            <div className="social-item">
-              <a href="https://www.tiktok.com/@e.m.interiores"
-                target="_blank"
-                rel="noopener noreferrer">
-                <FaTiktok className="icon" />
-                Tiktok
-              </a>
-            </div>
-          </div>
+        <div className="footer-logo">
+          <Link to="/">
+            <img src={logo} alt="E.M Interiores" />
+          </Link>
         </div>
 
+        <div className="footer-column">
+          <h3>Navegue pelo site</h3>
+
+          <Link to="/portfolio">Portfólio</Link>
+
+          <Link to="/historia">
+            Nossa História
+          </Link>
+
+          <Link to="/como-funciona">
+            Como Funciona
+          </Link>
+
+        </div>
+
+        <div className="footer-column">
+          <h3>Redes sociais</h3>
+
+          <a
+            href="https://wa.me/5511961640586"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={whatsapp} alt="WhatsApp" className="footer-icon" />
+
+            +55 11 96164-0586
+          </a>
+
+          <a
+            href="https://www.instagram.com/e.m.interiores/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={instagram} alt="Instagram" className="footer-icon" />
+
+            @e.m.interiores
+          </a>
+
+          <a
+            href="https://www.tiktok.com/@e.m.interiores"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src={tiktok} alt="TikTok" className="footer-icon" />
+
+            @E.m.interiores
+          </a>
+        </div>
+
+        <div className="footer-column">
+          <h3>Atendo o Brasil todo!!</h3>
+
+          <p>
+            Venha fazer uma consulta comigo
+            <br />
+            e realizar seu sonho em realidade!!
+          </p>
+
+          <button className="btn-gold"
+            onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=5511999999999&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os.'}>
+            FAÇA SEU ORÇAMENTO
+          </button>
+        </div>
       </div>
 
-      {/* LINHA DE CIMA DO COPYRIGHT */}
-      <div className="footer-bottom">
-        <div className="copyright-left">
-          <FaRegCopyright className="icon" />
-          <p>2025 – Eduarda Silva Prado. Todos os direitos reservados.</p>
-        </div>
+      <div className="footer-line-copyright"></div>
 
-        <a href="https://gustawebsites.com.br/"
-         className="dev-by "
-         target="_blank"
-        rel="noopener noreferrer"
-         >Desenvolvido por GustaWebsites</a>
+      <div className="footer-copyright">
+        © 2026 – Eduarda Silva Prado. Todos os direitos reservados.
       </div>
     </footer>
   );

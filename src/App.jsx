@@ -4,11 +4,10 @@ import Footer from "./common/Footer/Footer.jsx";
 import NavBar from "./common/NavBar/NavBar.jsx";
 import ScrollToTop from "./common/ScrollToTop.jsx";
 
-import LinkBridge from "./pages/LinkBridge/index.jsx";
 import LandingPage from "./pages/LandingPage/index.jsx";
 import ComoFunciona from "./pages/ComoFunciona/index.jsx";
 import Portfolio from "./pages/Portfolio/index.jsx";
-import Contato from "./pages/Contato/index.jsx";
+import Contato from "./pages/Historia/index.jsx";
 
 export default function App() {
   return (
@@ -18,11 +17,10 @@ export default function App() {
       <NavBar />
 
       <Routes>
-        <Route path="/" element={<LinkBridge />} />
-        <Route path="/home" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/como-funciona" element={<ComoFunciona />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/contato" element={<Contato />} />
+        <Route path="/historia" element={<Contato />} />
 
         {/* Página 404 */}
         <Route path="*" element={<h1>Página não encontrada</h1>} />

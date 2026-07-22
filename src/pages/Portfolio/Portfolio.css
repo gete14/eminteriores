@@ -3,437 +3,300 @@
 /* ===============================
    CONTAINER DO PORTFÓLIO
 ================================ */
-.portfolio-gallery{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.portfolio-container {
-    padding: 10rem 10% 0% 10%;
-    background-image: url("../../assets/fundo.jpg");
-    background-size: cover;
-    background-position: center;
-    min-height: 80vh;
+
+.heroPortfolio {
     position: relative;
-    z-index: 1;
-}
-
-.portfolio-title {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: var(--color2);
-   
-}
-
-.section-block {
-    margin-bottom: 10px;
-}
-
-
-
-/* ===============================
-   BOTÕES DE AMBIENTE
-================================ */
-.ambientes-buttons {
+    min-height: 100vh;
     display: flex;
-    gap: 3rem;
-    flex-wrap: wrap;
-    margin: 3rem 0;
-}
-
-.ambiente-btn {
-    position: relative;
-    padding: 10px 18px;
-    border-radius: 999px;
-    border: 1px solid var(--color2);
-    background: var(--color1);
-    color: var(--color3);
-    font-size: 0.95rem;
-    font-weight: 500;
-    cursor: pointer;
-
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.25s ease,
-        box-shadow 0.3s ease;
-}
-.ambiente-btn::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        var(--color2),
-       
-        var(--color2)
-    );
-
-    transform: translateX(-50%);
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-
-.ambiente-btn:hover {
-    background: var(--color2);
-    color: var(--color1);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-}
-
-.ambiente-btn:hover::after {
-    width: 50%;
-}
-
-.ambiente-btn.ativo {
-    background: var(--color2);
-    color: var(--color1);
-    transform: scale(1.08);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-}
-
-.ambiente-btn.ativo::after {
-    width: 100%;
-}
-
-
-/* ===============================
-   MOBILE
-================================ */
-@media (max-width: 600px) {
-    .ambiente-btn {
-        padding: 8px 14px;
-        font-size: 0.85rem;
-    }
-}
-
-
-
-
-/* ===============================
-   SLIDER BASE
-================================ */
-.portfolio-slider {
-    width: 90%;
-    margin-bottom: 1rem;
-}
-
-.portfolio-slider .slick-slide {
-    padding: 0 10px;
-}
-
-.portfolio-slider .slick-list {
-    margin: 0 -10px;
-}
-
-/* evita slide forçar altura */
-.portfolio-slider .slick-slide > div {
-    display: flex;
-    justify-content: center;
-}
-
-/* ===============================
-   CARD / IMAGEM (AGORA FUNCIONA)
-================================ */
-.portfolio-card {
-    width: 100%;
-    max-width: 380px;              /* impede ficar gigante */
-    border-radius: 12px;
     overflow: hidden;
-    background: rgba(15, 23, 42, 0.6);
+    background: var(--color-ivory);
 }
 
-.portfolio-card img {
+.heroPortfolio__content {
+    position: absolute;
+    z-index: 2;
+    width: 60%;
+    height:55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom-right-radius: 30px;
+
+}
+
+.heroPortfolio__content h1 {
+    font-family: var(--font-Playfair);
+    font-size: 4.6rem;
+    background: var(--gradient-gold-text-hero-social);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    left: 70%;
+    position: relative;
+    text-align: center;
+}
+
+.heroPortfolio__content p {
+    left: 102%;
+    position: relative;
+    width: 36%;
+    text-align: center;
+    color: var(--color-charcoal);
+}
+
+.heroPortfolio__image {
     width: 100%;
-    height: auto;                 /* DESKTOP – pequeno */
+    height: 100vh;
+}
+
+.heroPortfolio__image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    display: block;
-}
-
-/* ===============================
-   SETAS DO SLIDER
-================================ */
-.portfolio-slider .slick-prev,
-.portfolio-slider .slick-next {
-    width: 40px;
-    height: 40px;
-    z-index: 10;
-}
-
-.portfolio-slider .slick-prev {
-    left: -50px;
-}
-
-.portfolio-slider .slick-next {
-    right: -50px;
-}
-
-.portfolio-slider .slick-prev:before,
-.portfolio-slider .slick-next:before {
-    color: var(--color2) !important;
-    font-size: 30px !important;
-}
-
-/* ===============================
-   DOTS (PAGINAÇÃO)
-================================ */
-.portfolio-slider .slick-dots li button:before {
-    color: var(--color2);
-    opacity: 0.4;
-}
-
-.portfolio-slider .slick-dots li.slick-active button:before {
-    color: var(--color2);
-    opacity: 1;
 }
 
 
-/* ===============================
-   RESPONSIVO — TABLET
-================================ */
-@media (max-width: 1024px) {
-
-    .portfolio-container {
-        padding: 8rem 4% 4% 4%;
-    }
-
-    .portfolio-slider .slick-slide {
-        padding: 0 8px;
-    }
-
-    .portfolio-slider .slick-list {
-        margin: 0 -8px;
-    }
-
-    .portfolio-card {
-        max-width: 260px;
-    }
-
-    .portfolio-card img {
-        height: 315px;
-    }
-
-    .portfolio-slider .slick-prev:before,
-    .portfolio-slider .slick-next:before {
-        font-size: 26px !important;
-    }
-}
-
-/* ===============================
-   RESPONSIVO — MOBILE
-================================ */
-@media (max-width: 600px) {
-
-    .portfolio-container {
-        padding: 7rem 4% 4% 4%;
-    }
-
-    .portfolio-title {
-        font-size: 2rem;
-    }
-
-    .portfolio-slider {
-        padding: 0 5px;
-    }
-
-    .portfolio-slider .slick-slide {
-        padding: 0 5px;
-    }
-
-    .portfolio-slider .slick-list {
-        margin: 0 -5px;
-    }
-
-    .portfolio-card {
-        max-width: 220px;
-    }
-
-    .portfolio-card img {
-        height: 300px;              /* MOBILE – miniatura */
-    }
-
-    .portfolio-slider .slick-prev:before,
-    .portfolio-slider .slick-next:before {
-        font-size: 22px !important;
-    }
-
-    .portfolio-slider .slick-prev {
-        left: -20px;
-    }
-
-    .portfolio-slider .slick-next {
-        right: -20px;
-    }
-
-   
-}
 
 /* ===== TOUR VIRTUAL ===== */
 
 .tour-section {
-  width: 100%;
-  padding: clamp(2rem, 4vw, 5rem);
+    width: 100%;
+    padding: clamp(2rem, 4vw, 5rem);
 }
-
-.tour-title {
-  font-size: clamp(1.5rem, 2.5vw, 2.4rem);
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--color2);
-}
-
 /* Carrossel */
 .tour-carousel {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-}
-
-.tour-carousel::-webkit-scrollbar {
-  height: 6px;
-}
-
-.tour-carousel::-webkit-scrollbar-thumb {
-  background: var(--color2);
-  border-radius: 10px;
+    display: flex;
+    gap: 5rem;    
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
 }
 
 /* Card */
 .tour-card {
-  min-width: 280px;
-  max-width: 320px;
-  background: var(--color2);
-  border-radius: 16px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
+    min-width: 220px;
+    max-width: 320px;
+    background: var(--color-charcoal);
+    border-radius: 16px;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.tour-card-border {
+    position: absolute;
+    inset: -12px;
+    width: calc(100% + 24px);
+    height: calc(100% + 24px);
+    object-fit: fill;
+    pointer-events: none;
+    z-index: 3;
 }
 
 .tour-card:hover {
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 /* Imagem */
 .tour-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+    width: 100%;
+    height: 180px;
+    padding: 0.5rem;
+    border-radius: 18px;
+    object-fit: cover;
 }
-.tour-image{
+
+.tour-image {
     cursor: pointer;
 }
 
 /* Conteúdo */
 .tour-content {
-  padding: 1rem;
-}
-
-.tour-content h3 {
-  font-size: 1.1rem;
-  color: var(--color1);
-  margin-bottom: 0.4rem;
+    padding: 1rem;
 }
 
 .tour-content p {
-  font-size: 0.9rem;
-  color: var(--color1);
-  margin-bottom: 1rem;
+    font-size: 0.9rem;
+    background: var(--gradient-gold-text-historia);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    font-family: var(--font-Playfair);
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
-/* Botão */
-.tour-button {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--color2Hover);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s ease;
-}
-
-.tour-button:hover {
-  background: var(--color1);
-  color: var(--color2);
-  scale: 1.1;
-}
-
-/* Responsivo */
-@media (min-width: 1024px) {
-  .tour-carousel {
-    overflow-x: hidden;
-    flex-wrap: wrap;
-  }
-
-  .tour-card {
-    flex: 1;
-    max-width: 100%;
-  }
-}
 /* ===== MODAL IMAGEM ===== */
 
 .tour-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  padding: 2rem;
-  animation: fadeIn 0.3s ease;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
 }
 
 .tour-modal-image {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-  animation: zoomIn 0.3s ease;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.3s ease;
 }
 
 /* Botão fechar */
 .tour-modal-close {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  background: none;
-  border: none;
-  font-size: 2.2rem;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .tour-modal-close:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
+    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 /* Animações */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes zoomIn {
-  from {
-    transform: scale(0.9);
-  }
-  to {
-    transform: scale(1);
-  }
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1);
+    }
 }
 
+/* ===============================
+   RESPONSIVO - TABLET
+================================ */
+@media (max-width: 1024px) {
+    .heroPortfolio__content {
+        width: 75%;
+    }
+
+    .heroPortfolio__content h1 {
+        font-size: 3.5rem;
+        left: 40%;
+    }
+
+    .heroPortfolio__content p {
+        left: 38%;
+        width: 60%;
+    }
+
+    .tour-carousel {
+        gap: 2.5rem;
+    }
+}
+
+/* ===============================
+   RESPONSIVO - MOBILE
+================================ */
+@media (max-width: 768px) {
+    .heroPortfolio {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .heroPortfolio__image {
+        height: 55vh;
+        min-height: 300px;
+    }
+
+    .heroPortfolio__content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(28, 18, 8, 0.75) 0%, rgba(28, 18, 8, 0.3) 60%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 2rem;
+    }
+
+    .heroPortfolio__content h1 {
+        font-size: 2.6rem;
+        left: 0;
+        position: relative;
+        text-align: left;
+        background: var(--gradient-gold-text-hero-social);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .heroPortfolio__content p {
+        left: 0;
+        position: relative;
+        width: 100%;
+        text-align: left;
+        color: var(--color-ivory);
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+
+    .tour-carousel {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .tour-card {
+        min-width: 200px;
+        max-width: 280px;
+    }
+
+    .tour-section {
+        padding: clamp(1.5rem, 3vw, 3rem);
+    }
+}
+
+/* ===============================
+   RESPONSIVO - MOBILE PEQUENO
+================================ */
+@media (max-width: 480px) {
+    .heroPortfolio__image {
+        height: 50vh;
+    }
+
+    .heroPortfolio__content h1 {
+        font-size: 2rem;
+    }
+
+    .tour-carousel {
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .tour-card {
+        min-width: 160px;
+        max-width: 240px;
+    }
+
+    .tour-modal-close {
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.8rem;
+    }
+}

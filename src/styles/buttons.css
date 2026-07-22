@@ -1,0 +1,38 @@
+@import url("../styles/global.css");
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: clamp(0.6rem, 1.2vw, 0.8rem) clamp(1.2rem, 2.5vw, 2rem);
+
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.9rem, 1.2vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background: var(--gradient-gold-btn);
+
+  transition: all .3s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-4px);
+
+  background: var(--gradient-gold-btn-hover);
+}
+
+@media (max-width: 480px) {
+  .btn-gold {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+    letter-spacing: 0.08em;
+  }
+}

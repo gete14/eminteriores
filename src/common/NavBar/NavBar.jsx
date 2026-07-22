@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./NavBar.css";
-import logo from "../../assets/logos/logoAzul.png";
+import logoSvg from "../../assets/logos/logo.svg";
 import { Link, useLocation } from "react-router-dom";
 
 // Ícones
@@ -49,18 +49,17 @@ export default function NavBar() {
     document.addEventListener("click", handleClickOutside);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
-  if (location.pathname === "/") {
-  return null;
-}
+  const isActive = (path) => location.pathname === path;
 
 
   return (
     <header className={showHeader ? "show" : "hide"}>
       <div className="header-content">
 
-        <Link to='/home'>
+        <Link to='/'>
           <div className="logo-area">
-            <img src={logo} alt="Logo" className="logo" />
+            
+            <img src={logoSvg} alt="Logo" className="logo" />
           </div>
         </Link>
 
@@ -75,11 +74,40 @@ export default function NavBar() {
 
         {/* Menu */}
         <nav ref={menuRef} className={`nav-menu ${menuOpen ? "open" : ""}`}>
-          <Link to='/home' className="button-nav">Home</Link>
-          <Link to='/como-funciona' className="button-nav">Como Funciona</Link>
-          <Link to='/portfolio' className="button-nav">Portfólio</Link>
-          <Link to='/contato' className="button-nav">Contato</Link>
+          <Link
+            to="/"
+            className={`button-nav ${isActive("/") ? "active" : ""}`}
+          >
+            Início
+          </Link>
+
+          <Link
+            to="/como-funciona"
+            className={`button-nav ${isActive("/como-funciona") ? "active" : ""}`}
+          >
+            Como Funciona
+          </Link>
+
+          <Link
+            to="/portfolio"
+            className={`button-nav ${isActive("/portfolio") ? "active" : ""}`}
+          >
+            Portfólio
+          </Link>
+
+          <Link
+            to="/historia"
+            className={`button-nav ${isActive("/historia") ? "active" : ""}`}
+          >
+            História
+          </Link>
         </nav>
+        <button
+          onClick={() => window.location.href = 'https://api.whatsapp.com/send?phone=5511999999999&text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os.'}
+          className="btn-gold"
+        >
+          Fale Comigo
+        </button>
 
       </div>
     </header>

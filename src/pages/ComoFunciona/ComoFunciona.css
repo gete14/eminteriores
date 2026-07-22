@@ -1,210 +1,277 @@
-/* ============================
-   IMPORTS
-============================ */
 @import url("../../styles/global.css");
 
-
 /* ============================
-   CONTAINER GERAL
+   SEÇÃO
 ============================ */
 .passos-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: clamp(5rem, 13vw, 10rem);
-    background-image: url("../../assets/fundo.jpg");
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding-top: clamp(5rem, 13vw, 10rem);
+  padding-bottom: 4rem;
+  background-color: var(--color-ivory);
 }
-
 
 /* ============================
-   INDICADORES (Números)
+   STAGE (área dos cards)
 ============================ */
-.passos-indicadores {
-    display: flex;
-    gap: 10px;
-    padding: 10px;
-    flex-wrap: wrap;
-    width: 80%;
-    justify-content: center;
+.passos-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(440px, 70vh, 660px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-
-.passo-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: var(--color2);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.passo-btn.ativo {
-    transform: scale(1.2);
-    background: var(--color2Hover);
-}
-
 
 /* ============================
-   ÁREA PRINCIPAL
+   CARD BASE
 ============================ */
-.passos-conteudo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 90%;
-}
+.pfc {
+  position: absolute;
+  width: clamp(260px, 34vw, 540px);
+  height: 100%;
+  background: var(--surface-elevated);
+  border-radius: 20px;
+  border: 1.5px solid var(--color-gold-300);
+  padding: 1.5rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
 
 /* ============================
-   BOTÕES DE SETA
+   ESTADOS
 ============================ */
-.arrow-icon {
-    width: 30px;
-    height: 30px;
+
+/* Ativo — grande no centro */
+.pfc.ativo {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 20px 56px rgba(184, 134, 11, 0.22);
 }
 
+/* Adjacente esquerda */
+.pfc.adj.esq {
+  transform: translateX(-74%) scale(0.62);
+  opacity: 0.75;
+  z-index: 5;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: brightness(0.85);
+}
+
+/* Adjacente direita */
+.pfc.adj.dir {
+  transform: translateX(74%) scale(0.62);
+  opacity: 0.75;
+  z-index: 5;
+  cursor: pointer;
+  pointer-events: auto;
+  filter: brightness(0.85);
+}
+
+.pfc.adj:hover {
+  opacity: 0.92;
+  filter: brightness(0.95);
+}
+
+/* Oculto — fora da tela */
+.pfc.oculto {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* transform vem via inline style (direção correta) */
+}
+
+/* Esconde descrição nos cards pequenos */
+.pfc.adj .pfc-desc {
+  display: none;
+}
+
+/* ============================
+   CONTEÚDO DO CARD
+============================ */
+
+.pfc-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient-gold-btn);
+  color: var(--color-charcoal);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.55rem;
+  flex-shrink: 0;
+}
+
+.pfc-icone {
+  font-size: 1.5rem;
+  color: var(--color-gold-400);
+  margin-bottom: 0.75rem;
+}
+
+.pfc-img-wrapper {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-gold-200);
+  margin-bottom: 1rem;
+}
+
+.pfc-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pfc-titulo {
+  font-family: var(--font-Playfair);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin-bottom: 0.45rem;
+}
+
+.pfc-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================
+   SETAS
+============================ */
 .passo-seta {
-    background: var(--color2);
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--gradient-gold-btn);
+  color: var(--color-charcoal);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
 }
 
-.passo-seta:hover {
-    background: var(--color2Hover);
-    scale: 1.1;
-    transition: 200ms;
+.passo-seta-esq { left: 1rem; }
+.passo-seta-dir { right: 1rem; }
+
+.passo-seta:hover:not(:disabled) {
+  background: linear-gradient(var(--gradient-gold-btn-hover));
+  transform: translateY(-50%) scale(1.1);
 }
 
+.passo-seta:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
 
 /* ============================
-   CARD PRINCIPAL
+   DOTS
 ============================ */
-.passo-card {
-    display: flex;
-    background: var(--color1);
-    border: 3px solid var(--color2);
-    border-radius: 25px;
-    overflow: hidden;
-    margin: 2rem;
-    
-
-    /* 🔥 AQUI ESTAVA O PROBLEMA */
-    width: clamp(300px, 70vw, 800px);
-    height: clamp(380px, 70vh, 750px);
-
+.passos-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
 }
 
-/* Fade animation */
-.fade {
-    animation: fadeIn 0.4s ease forwards;
+.passo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-gold-300);
+  opacity: 0.35;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.98);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+.passo-dot.ativo {
+  opacity: 1;
+  background: linear-gradient(var(--gradient-gold-btn));
+  transform: scale(1.45);
 }
-
 
 /* ============================
-   IMAGENS / VÍDEOS
+   MOBILE
 ============================ */
-.passo-imagem {
-    width: 50%;
-    height: 100%;
-}
+@media (max-width: 600px) {
+  .passos-stage {
+    height: clamp(400px, 65vh, 500px);
+  }
 
-.passo-imagem img,
-.passo-imagem video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-right: 2px solid var(--color2);
-}
+  .pfc.adj.esq  { transform: translateX(-68%) scale(0.55); }
+  .pfc.adj.dir  { transform: translateX(68%) scale(0.55); }
 
+  .passo-seta-esq { left: 0.25rem; }
+  .passo-seta-dir { right: 0.25rem; }
+
+  .passos-section {
+    padding-top: clamp(3rem, 10vw, 6rem);
+    padding-bottom: 3rem;
+  }
+}
 
 /* ============================
-   TEXTO E ÍCONE
-============================ */
-.passo-info {
-    width: 50%;
-    height: 100%;
-    padding: 30px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-    color: var(--color2);
-}
-
-/* Ícone */
-.passo-icone .icone,
-.icone {
-    width: clamp(25px, 5vw, 60px);
-    height: clamp(25px, 5vw, 60px);
-    margin-bottom: 1rem;
-}
-
-.passo-info p {
-    font-size: clamp(0.8rem, 1.8vw, 1.5rem);
-}
-/* ============================
-   MOBILE FIX (até 480px)
+   MOBILE PEQUENO
 ============================ */
 @media (max-width: 480px) {
-    .passo-card {
-        flex-direction: column;       /* IMAGEM EM CIMA, TEXTO EMBAIXO */
-        width: 90vw;
-        height: auto;
-    }
+  .passos-stage {
+    height: clamp(360px, 60vh, 460px);
+  }
 
-    .passo-imagem {
-        width: 100%;
-        height: 250px;                /* altura boa no mobile */
-    }
+  .pfc {
+    width: clamp(220px, 80vw, 320px);
+    padding: 1rem 1rem 1.5rem;
+  }
 
-    .passo-imagem img,
-    .passo-imagem video {
-        border-right: none;           /* tira borda lateral */
-        border-bottom: 2px solid var(--color2);
-        height: 100%;
-    }
+  .pfc.adj.esq  { transform: translateX(-62%) scale(0.5); }
+  .pfc.adj.dir  { transform: translateX(62%) scale(0.5); }
 
-    .passo-info {
-        width: 100%;
-        padding: 20px;
-    }
+  .passo-seta {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
 
-    .passos-indicadores {
-        width: 60%;
-        gap: 5px;
-    }
-    
-    .passo-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
-    }
+  .passo-seta-esq { left: 0.1rem; }
+  .passo-seta-dir { right: 0.1rem; }
 
-    .passo-seta {
-        width: 40px;
-        height: 40px;
-    }
+  .pfc-titulo {
+    font-size: 0.9rem;
+  }
+
+  .pfc-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 0.65rem;
+  }
 }

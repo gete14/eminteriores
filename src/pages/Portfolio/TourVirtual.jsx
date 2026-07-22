@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Portfolio.css";
 
+import cardBorder from "./images/cardBorder.png";
 import imagem1 from "./images/tour-virtual/image1.png";
 import imagem2 from "./images/tour-virtual/image2.png";
 import imagem3 from "./images/tour-virtual/image3.png";
@@ -35,8 +36,6 @@ export default function TourVirtual() {
   return (
     <>
       <section className="tour-section">
-        <h2 className="tour-title">Tours Virtuais</h2>
-
         <div className="tour-carousel">
           {tours.map((tour) => (
             <div className="tour-card" key={tour.id}>
@@ -46,6 +45,7 @@ export default function TourVirtual() {
                 alt={tour.cliente}
                 onClick={() => setImagemAtiva(tour.imagem)}
               />
+              <img src={cardBorder} className="tour-card-border" alt="" />
 
               <div className="tour-content">
                 <p>
@@ -58,7 +58,7 @@ export default function TourVirtual() {
                   href={tour.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="tour-button"
+                  className="btn-gold"
                 >
                   Acessar Tour
                 </a>

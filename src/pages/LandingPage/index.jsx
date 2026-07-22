@@ -2,6 +2,7 @@ import Hero from "./Hero.jsx";
 import Diferenciais from "./Diferenciais.jsx";
 import HeroSocial from "./HeroSocial.jsx";
 import WhatsAppButton from "../../common/WhatsAppButton/WhatsAppButton.jsx";
+import UltimosProjetos from "./UltimosProjetos.jsx";
 
 export default function LandingPage() {
   return (
@@ -9,6 +10,7 @@ export default function LandingPage() {
       <Hero />
       <Diferenciais />
       <HeroSocial />
+      <UltimosProjetos />
       <WhatsAppButton />
     </>
   );
