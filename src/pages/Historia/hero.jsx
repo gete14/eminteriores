@@ -1,4 +1,3 @@
-import "./comecou";
 import heroImg from "./images/historia-hero.png";
 
 export default function Hero() {
